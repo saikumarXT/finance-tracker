@@ -4,7 +4,7 @@ const ObjectId=mongoose.Types.ObjectId;
 
 const user=new Schema({
 userName:{type:String,unique:true},
-password:Number
+password:String
 })
 
 
@@ -12,18 +12,23 @@ const incomeTypes=['salary','rental','stockMarket','fd'];
 
 
 const income= new Schema({
-userId:{ type:ObjectId,unique:true },
-income:{ type:String, enum:incomeTypes },
+userId:{ type:ObjectId },
+income:{ type:Number },
+category:{ type:String, enum:incomeTypes},
 note:{ type:String }
-})
+})   
+
 
 const expensesTypes=['groceries','travel','food','entertainment']
 
+
 const expenses=new Schema({
-userId:{ type:ObjectId,unique:true },
-income:{ type:String, enum:expensesTypes },
+userId:{ type:ObjectId},
+income:{ type:String},
+category:{type:String, enum:expensesTypes},
 note:{ type:String }
 })
+
 
 
 const userModel=mongoose.model('users',user);

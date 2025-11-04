@@ -6,7 +6,7 @@ import { userRouter } from './controllers/userController.js';
 
 
 const app=express();
-mongoose.connect('mongodb+srv://note:pZZLU1j2eZ1jI5Hb@cluster1111.0l4ggr5.mongodb.net/finance-app')
+await mongoose.connect('mongodb+srv://note:pZZLU1j2eZ1jI5Hb@cluster1111.0l4ggr5.mongodb.net/finance')
 
 
 app.use(express.json());
@@ -14,7 +14,7 @@ app.use(cors());
 
 
 
-app.use('/api/v1/user',userRouter);
+app.use('/api/v1/',userRouter);
 
 
 

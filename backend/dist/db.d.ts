@@ -1,25 +1,25 @@
 import mongoose from "mongoose";
 declare const userModel: mongoose.Model<{
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
     __v: number;
 }, mongoose.Schema<any, mongoose.Model<any, any, any, any, any, any>, {}, {}, {}, {}, mongoose.DefaultSchemaOptions, {
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
-    password?: number | null;
+    password?: string | null;
     userName?: string | null;
 }> & {
     _id: mongoose.Types.ObjectId;
@@ -36,7 +36,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     userId?: {
@@ -48,7 +49,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
     userId?: {
@@ -60,7 +62,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -76,7 +79,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     userId?: {
@@ -88,7 +92,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     userId?: {
@@ -100,7 +105,8 @@ declare const incomeModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
+    income?: number | null;
+    category?: string | null;
     note?: string | null;
 }> & {
     _id: mongoose.Types.ObjectId;
@@ -118,6 +124,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     userId?: {
@@ -130,6 +137,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
     userId?: {
@@ -142,6 +150,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 } & {
     _id: mongoose.Types.ObjectId;
@@ -158,6 +167,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     userId?: {
@@ -170,6 +180,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     userId?: {
@@ -182,6 +193,7 @@ declare const expensesModel: mongoose.Model<{
         isValid?: {} | null;
     } | null;
     income?: string | null;
+    category?: string | null;
     note?: string | null;
 }> & {
     _id: mongoose.Types.ObjectId;
