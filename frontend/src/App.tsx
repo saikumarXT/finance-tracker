@@ -1,11 +1,15 @@
 import './index.css'
-import { Button } from './components/Button'
+import DashBoard from './pages/dashBoard';
+
+
 
 function App() {
 
-  return<div className='bg-blue-200 max-h-full'> 
-    <Button/>
+  return<div>   
+    <DashBoard/>
+
   </div>
 }
+
 
 export default App
