@@ -11,10 +11,10 @@ interface cardProps{
 
 
 const variantClass={
-  "one":"bg-blue-300",
-  "two":"bg-yellow-300",
-  "three":"bg-pink-300",
-  "four":"bg-red-400"
+  "one":"bg-blue-800",
+  "two":"bg-yellow-400",
+  "three":"bg-pink-700",
+  "four":"bg-red-500"
 }
 
 

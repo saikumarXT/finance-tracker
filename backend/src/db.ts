@@ -19,7 +19,7 @@ note:{ type:String }
 })   
 
 
-const expensesTypes=['groceries','travel','food','entertainment']
+const expensesTypes=['Groceries','Travel','Food','Entertainment','Health','Shopping']
 
 
 const expenses=new Schema({

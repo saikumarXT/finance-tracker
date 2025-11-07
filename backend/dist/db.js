@@ -12,7 +12,7 @@ const income = new Schema({
     category: { type: String, enum: incomeTypes },
     note: { type: String }
 });
-const expensesTypes = ['groceries', 'travel', 'food', 'entertainment'];
+const expensesTypes = ['Groceries', 'Travel', 'Food', 'Entertainment', 'Health', 'Shopping'];
 const expenses = new Schema({
     userId: { type: ObjectId },
     income: { type: String },
