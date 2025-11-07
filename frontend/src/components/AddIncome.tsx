@@ -15,7 +15,7 @@ enum contentType {
 }
 
 
-function AddIncome({openIncome,setOpenIncome}) {
+function AddIncome({openIncome,setOpenIncome,setIncomeControl}) {
 const[content,setContentType]=useState(contentType.salary);
 
 
@@ -25,6 +25,7 @@ const noteRef=useRef<HTMLInputElement>();
 
 
   async function addIncome(){
+    
     const income=incomeRef.current?.value;
     const note=noteRef.current?.value;
     const category=content;
@@ -45,9 +46,10 @@ const noteRef=useRef<HTMLInputElement>();
   }
 
  catch (err: any) {
-    console.error("❌ Error:", err.response?.data || err.message);
+    console.error(" Error:", err.response?.data || err.message);
     alert("Error: " + (err.response?.data?.message || "Bad Request"));
   }
+     setIncomeControl((x)=> !x);
   }
 
 
@@ -101,7 +103,7 @@ const noteRef=useRef<HTMLInputElement>();
                 /></div>
       </div>
       <div className="flex justify-center">  
-         <div className=" mt-3"> <Button onClick={()=>addIncome()} variant='primary' text='Add Income'   fontSize="sm"/>
+         <div className=" mt-3"> <Button onClick={()=>addIncome()}    variant='primary' text='Add Income'   fontSize="sm"/>
          </div>
       </div>
     </div>

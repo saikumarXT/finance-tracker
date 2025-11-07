@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import AddExpense from "../components/AddExpenses";
 import AddIncome from "../components/AddIncome";
 import { Button } from "../components/Button";
@@ -9,9 +9,23 @@ function DashBoard() {
   const [openIncome,setOpenIncome]=useState(false)
   const [openExpense,setOpenExpense]=useState(false)
 
-  function printingName(name: string) {
-    return name;
-  }
+  const[incomeControl,setIncomeControl]=useState(false);
+  const[expenseControl,setExpenseControl]=useState(false);
+
+  const [totalIncome,setTotalIncome]=useState(0);
+  const [totalExpense,setTotalExpense]=useState(0);
+  const [balance,totalBalance]=useState(0);
+  const [average,setAverage]=useState(0)
+
+  
+
+
+
+
+
+
+
+
 
   return (
     <div>
@@ -48,7 +62,7 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="one"
-            amount={1000.0}
+            amount={ totalIncome }
             value1="Spent"
             value2="This month expenses"
           />
@@ -59,7 +73,7 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="two"
-            amount={1000.0}
+            amount={ totalExpense }
             value1=" Income"
             value2="This month Income"
           />
@@ -70,7 +84,7 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="three"
-            amount={1000.0}
+            amount={ balance }
             value1=" Balance "
             value2="This month Balance"
           />
@@ -81,17 +95,18 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="four"
-            amount={1000.0}
+            amount={ average }
             value1="Average"
             value2="Per expense"
           />
         </div>
       </div>
  
-    <AddIncome openIncome={openIncome} setOpenIncome={setOpenIncome}/>
-      
-      <AddExpense openExpense={openExpense} setOpenExpense={setOpenExpense}/>
+    <AddIncome openIncome={openIncome} setIncomeControl={setIncomeControl} setOpenIncome={setOpenIncome}/>
+    <AddExpense openExpense={openExpense}   setExpenseControl={setExpenseControl} setOpenExpense={setOpenExpense}/>
  
+ 
+
     </div>
   );
 }

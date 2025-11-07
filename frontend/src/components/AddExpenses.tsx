@@ -6,10 +6,10 @@ import { Input } from "./Input";
 
 
 enum expensesTypes{
-  Groceries="Groceries",
+  Groceries='Groceries',
   Travel='Travel',
   Food='Food',
-  Entertainment="Entertainment",
+  Entertainment='Entertainment',
   Health='Health',
   Shopping='Shopping'
 }
@@ -36,9 +36,10 @@ const noteRef=useRef<HTMLInputElement>()
         note
       },{
         headers:{
-          "authorization":localStorage.getItem('token')
+          authorization: `Bearer ${localStorage.getItem("token")}`,
         }
       })
+      console.log(res);
       alert('done');
     }
 
