@@ -133,9 +133,9 @@ userRouter.post("/income", auth, async (req, res) => {
             });
         }
     }
-    catch (err) {
+    catch (error) {
         res.status(400).json({
-            message: err
+            message: error.message || error
         });
     }
 });

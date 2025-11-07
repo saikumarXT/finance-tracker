@@ -1,34 +1,53 @@
 
-import { useState } from "react";
+import { useState , useRef} from "react";
 import { ShareIcon } from "../icons/shareIcon";
 import { Button } from "./Button";
 import axios from "axios";
+import { Input } from "./Input";
+
 
 enum contentType {
   salary="salary",
   stockMarket="stockMarket",
   rental="rental",
   fixedDeposit='fixedDeposit',
-  realEstate='real-Estate'
+  realEstate='realEstate'
 }
 
 
 function AddIncome({openIncome,setOpenIncome}) {
-const[incomeData,SetIncomeData]=useState();
 const[content,setContentType]=useState(contentType.salary);
 
 
 
-const incomeRef=useRef();
-const noteRef=useref();
+const incomeRef=useRef<HTMLInputElement>();
+const noteRef=useRef<HTMLInputElement>();
 
 
   async function addIncome(){
-    const response=axios.post('http://localhost:3000/api/v1/user/income',{
-      
-    });
+    const income=incomeRef.current?.value;
+    const note=noteRef.current?.value;
+    const category=content;
+    console.log(income,note,category);
 
-    return
+    try{
+    const res=await axios.post('http://localhost:3000/api/v1/income',{
+      income,
+      note,
+      category
+    },{ 
+            headers:{
+           authorization: `Bearer ${localStorage.getItem("token")}`,
+          }
+    })
+    console.log(res.data.message,"hello")
+    alert('hello');
+  }
+
+ catch (err: any) {
+    console.error("❌ Error:", err.response?.data || err.message);
+    alert("Error: " + (err.response?.data?.message || "Bad Request"));
+  }
   }
 
 
@@ -51,9 +70,21 @@ const noteRef=useref();
       </div>
       <div>
         <p className="ml-6 mt-3 font-bold">Where did you get Money ?</p>
-        <div className="ml-6 mt-1"> <input placeholder="Enter description" type="text"   className="pl-6 w-64 h-8 rounded-md border-2  bg-gray-50 "   /></div>
+        <div className="ml-6 mt-1"> 
+       
+          <Input placeholder="Enter description" reference={noteRef}/>
+          
+          </div>
+        
+       
         <p className="ml-6 mt-3 font-bold">Amount$</p>
-        <div className="ml-6 mt-1"> <input placeholder="$ 0.00" type="text" className="pl-6 w-24 h-8  rounded-md border-2 bg-gray-50"/> </div>
+        <div className="ml-6 mt-1"> 
+          
+        
+         <Input placeholder="$ 0.00" reference={incomeRef}/>
+          
+          
+          </div>
       </div>
         <p className="ml-6 mt-3  font-bold">Category</p>
       <div className="flex flex-wrap gap-1.5 justify-center mt-2 ">
@@ -70,7 +101,7 @@ const noteRef=useref();
                 /></div>
       </div>
       <div className="flex justify-center">  
-         <div className=" mt-3"> <Button onClick={addIncome} variant='primary' text='Add Income'   fontSize="sm"/>
+         <div className=" mt-3"> <Button onClick={()=>addIncome()} variant='primary' text='Add Income'   fontSize="sm"/>
          </div>
       </div>
     </div>
@@ -80,6 +111,3 @@ const noteRef=useref();
 }
 
 export default AddIncome;
-
-
-/*<div className=" absolute h-screen w-screen top-0 opacity-20 bg-slate-500">*/

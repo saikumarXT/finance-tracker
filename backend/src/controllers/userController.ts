@@ -51,6 +51,7 @@ userRouter.post("/signin", async (req, res) => {
 userRouter.post("/expenses", auth, async (req, res) => {
   const userId = req.body.userId;
   const { amount, category, note } = req.body;
+  
   try {
     const postExpense = await expensesModel.create({
       userId,
@@ -147,9 +148,9 @@ userRouter.post("/income",auth ,async(req, res) => {
       })
     }
   }
-  catch(err){
+  catch(error:any){
     res.status(400).json({
-      message:err
+      message:error.message || error
     })
   }
 

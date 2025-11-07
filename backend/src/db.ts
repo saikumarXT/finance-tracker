@@ -8,7 +8,7 @@ password:String
 })
 
 
-const incomeTypes=['salary','rental','stockMarket','fd'];
+const incomeTypes=['realEstate','salary','rental','stockMarket','fixedDeposit'];
 
 
 const income= new Schema({
@@ -24,7 +24,7 @@ const expensesTypes=['Groceries','Travel','Food','Entertainment','Health','Shopp
 
 const expenses=new Schema({
 userId:{ type:ObjectId},
-income:{ type:String},
+amount:{ type:String},
 category:{type:String, enum:expensesTypes},
 note:{ type:String }
 })

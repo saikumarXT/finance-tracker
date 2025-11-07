@@ -123,9 +123,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -136,9 +136,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -149,9 +149,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -166,9 +166,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -179,9 +179,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -192,9 +192,9 @@ declare const expensesModel: mongoose.Model<{
         createFromBase64?: {} | null;
         isValid?: {} | null;
     } | null;
-    income?: string | null;
     category?: string | null;
     note?: string | null;
+    amount?: string | null;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {
