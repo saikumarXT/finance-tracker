@@ -42,7 +42,7 @@ userRouter.post("/signin", async (req, res) => {
     }
 });
 userRouter.post("/expenses", auth, async (req, res) => {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const { amount, category, note } = req.body;
     try {
         const postExpense = await expensesModel.create({
@@ -62,7 +62,7 @@ userRouter.post("/expenses", auth, async (req, res) => {
     }
 });
 userRouter.get("/expenses", auth, async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.userId;
     try {
         const expenses = await expensesModel.find({
             userId: userId,
@@ -80,7 +80,7 @@ userRouter.get("/expenses", auth, async (req, res) => {
     }
 });
 userRouter.put("/expenses", auth, async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.userId;
     const { amount, category, note, documentId } = req.body;
     try {
         const updateExpenses = await expensesModel.findByIdAndUpdate(documentId, {
@@ -101,7 +101,7 @@ userRouter.put("/expenses", auth, async (req, res) => {
     }
 });
 userRouter.delete("/expenses", auth, async (req, res) => {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const { documentId } = req.body;
     try {
         const removeData = await expensesModel.findByIdAndDelete(documentId);
@@ -118,7 +118,7 @@ userRouter.delete("/expenses", auth, async (req, res) => {
     }
 });
 userRouter.post("/income", auth, async (req, res) => {
-    const userId = req.body.userId;
+    const userId = req.userId;
     const { income, category, note } = req.body;
     try {
         const postIncome = await incomeModel.create({
@@ -140,23 +140,22 @@ userRouter.post("/income", auth, async (req, res) => {
     }
 });
 userRouter.get("/income", auth, async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.userId;
     try {
-        const getIncome = await incomeModel.find({ userId });
-        if (getIncome) {
-            res.status(200).json({
-                getIncome
-            });
-        }
+        const income = await incomeModel.find({ userId });
+        res.status(200).json({
+            income,
+        });
     }
     catch (err) {
+        console.log(err);
         res.status(400).json({
             message: err
         });
     }
 });
 userRouter.put("/income", auth, async (req, res) => {
-    const { userId } = req.body;
+    const userId = req.userId;
     const { category, income, note, documentId } = req.body;
     try {
         const editIncome = await incomeModel.findByIdAndUpdate(documentId, {
@@ -177,7 +176,7 @@ userRouter.put("/income", auth, async (req, res) => {
     }
 });
 userRouter.delete("/income", auth, async (req, res) => {
-    const userId = req.body;
+    const userId = req.userId;
     const { documentId } = req.body;
     try {
         const deleteIncome = await incomeModel.findByIdAndDelete(documentId);

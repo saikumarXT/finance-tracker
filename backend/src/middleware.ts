@@ -15,8 +15,8 @@ export const auth = (req: Request, res: Response, next: NextFunction) => {
     const token = authHeader.split(" ")[1];
     if (token) {
       const user = jwt.verify(token as string, JWT_SECRET_KEY);
-      req.body.userId = (user as JwtPayload).Id;
-      next();
+      req.userId  = (user as JwtPayload).Id;
+      next(); 
     }
   } catch (err) {
     res.status(200).json({

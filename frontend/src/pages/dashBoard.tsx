@@ -1,30 +1,48 @@
-import { use, useState } from "react";
+import {  useEffect, useState } from "react";
 import AddExpense from "../components/AddExpenses";
 import AddIncome from "../components/AddIncome";
 import { Button } from "../components/Button";
 import Card from "../components/Card";
 import { ShareIcon } from "../icons/shareIcon";
+import { useContent }from "../utils/incomeAdd.js";
+
+
 
 function DashBoard() {
   const [openIncome,setOpenIncome]=useState(false)
   const [openExpense,setOpenExpense]=useState(false)
 
-  const[incomeControl,setIncomeControl]=useState(false);
+  const[incomeControl,setIncomeControl]=useState(false);  /*fetch  control*/
   const[expenseControl,setExpenseControl]=useState(false);
 
-  const [totalIncome,setTotalIncome]=useState(0);
-  const [totalExpense,setTotalExpense]=useState(0);
-  const [balance,totalBalance]=useState(0);
-  const [average,setAverage]=useState(0)
-
-  
+  /*for assining data*/
+  const[incomeValue,setIncomeValue]=useState([]);
+  const[expenseValue,setExpenseValue]=useState([]);
 
 
+  const [totalIncome,setTotalIncome]=useState(); 
+  const [totalExpense,setTotalExpense]=useState(100);
+  const [balance,totalBalance]=useState(455);
+  const [average,setAverage]=useState(100);
 
 
+const { content, refresh ,calculateIncome , income} = useContent();
 
 
+useEffect(()=>{
+  refresh();
+},[incomeControl])
 
+
+useEffect(()=>{
+  setIncomeValue(content)
+  console.log("contents inside useEffect of dashboard",content);
+},[content])
+
+
+useEffect(()=>{
+  calculateIncome();
+},[content])
 
 
   return (
@@ -62,7 +80,7 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="one"
-            amount={ totalIncome }
+            amount={income+".00"}
             value1="Spent"
             value2="This month expenses"
           />
@@ -73,7 +91,7 @@ function DashBoard() {
           <Card
             icon={<ShareIcon />}
             variant="two"
-            amount={ totalExpense }
+            amount={ 88 }
             value1=" Income"
             value2="This month Income"
           />
@@ -92,6 +110,7 @@ function DashBoard() {
 
         <div>
           {" "}
+
           <Card
             icon={<ShareIcon />}
             variant="four"
@@ -102,8 +121,8 @@ function DashBoard() {
         </div>
       </div>
  
-    <AddIncome openIncome={openIncome} setIncomeControl={setIncomeControl} setOpenIncome={setOpenIncome}/>
-    <AddExpense openExpense={openExpense}   setExpenseControl={setExpenseControl} setOpenExpense={setOpenExpense}/>
+    <AddIncome  openIncome={openIncome} setIncomeControl={setIncomeControl} setOpenIncome={setOpenIncome}/>
+    <AddExpense openExpense={openExpense}  setExpenseControl={setExpenseControl} setOpenExpense={setOpenExpense}/>
  
  
 

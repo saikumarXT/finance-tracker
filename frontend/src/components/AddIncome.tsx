@@ -19,7 +19,6 @@ function AddIncome({openIncome,setOpenIncome,setIncomeControl}) {
 const[content,setContentType]=useState(contentType.salary);
 
 
-
 const incomeRef=useRef<HTMLInputElement>();
 const noteRef=useRef<HTMLInputElement>();
 
@@ -49,7 +48,7 @@ const noteRef=useRef<HTMLInputElement>();
     console.error(" Error:", err.response?.data || err.message);
     alert("Error: " + (err.response?.data?.message || "Bad Request"));
   }
-     setIncomeControl((x)=> !x);
+     setIncomeControl((x)=>!x);
   }
 
 

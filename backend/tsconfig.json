@@ -1,44 +1,42 @@
 {
   // Visit https://aka.ms/tsconfig to read more about this file
   "compilerOptions": {
-    // File Layout
+    /* 🌐 File Paths */
     "rootDir": "./src",
     "outDir": "./dist",
 
-    // Environment Settings
-    // See also https://aka.ms/tsconfig/module
-    "module": "nodenext",
-    "target": "esnext",
-    "types": [],
-    // For nodejs:
-    // "lib": ["esnext"],
-    // "types": ["node"],
-    // and npm install -D @types/node
+    /* 📦 Module & Environment */
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "target": "ESNext",
+    "lib": ["ESNext"],
+    "types": ["node", "express"],
 
-    // Other Outputs
+    /* 🧱 Output & Build Info */
     "sourceMap": true,
     "declaration": true,
     "declarationMap": true,
 
-    // Stricter Typechecking Options
+    /* ✅ Strict Type Checking */
+    "strict": true,
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
+    "forceConsistentCasingInFileNames": true,
 
-    // Style Options
-    // "noImplicitReturns": true,
-    // "noImplicitOverride": true,
-    // "noUnusedLocals": true,
-    // "noUnusedParameters": true,
-    // "noFallthroughCasesInSwitch": true,
-    // "noPropertyAccessFromIndexSignature": true,
+    /* 🧩 TypeScript + ES Interop */
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "allowSyntheticDefaultImports": true,
 
-    // Recommended Options
-    "strict": true,
-    "jsx": "react-jsx",
+    /* ⚙️ Module System Improvements */
     "verbatimModuleSyntax": true,
     "isolatedModules": true,
-    "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
-  }
+    "noUncheckedSideEffectImports": true,
+
+    /* ⚙️ Allow JSON imports if needed */
+    "resolveJsonModule": true
+  },
+  "include": ["src", "src/types"],   // ✅ Ensures Express type extension is picked up
+  "exclude": ["node_modules"]
 }

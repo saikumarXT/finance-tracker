@@ -10,7 +10,7 @@ export const auth = (req, res, next) => {
         const token = authHeader.split(" ")[1];
         if (token) {
             const user = jwt.verify(token, JWT_SECRET_KEY);
-            req.body.userId = user.Id;
+            req.userId = user.Id;
             next();
         }
     }

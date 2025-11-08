@@ -29,6 +29,7 @@ const noteRef=useRef<HTMLInputElement>()
       const category=openCategory
       console.log(note,amount,category)
 
+
       try{
       const res=await axios.post('http://localhost:3000/api/v1/expenses',{
         category,
@@ -36,12 +37,13 @@ const noteRef=useRef<HTMLInputElement>()
         note
       },{
         headers:{
-          authorization: `Bearer ${localStorage.getItem("token")}`,
+          authorization:`Bearer ${localStorage.getItem("token")}`,
         }
       })
       console.log(res);
       alert('done');
     }
+
 
 
   catch(err){
