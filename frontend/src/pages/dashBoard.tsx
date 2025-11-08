@@ -5,6 +5,7 @@ import { Button } from "../components/Button";
 import Card from "../components/Card";
 import { ShareIcon } from "../icons/shareIcon";
 import { useContent }from "../utils/incomeAdd.js";
+import { useContentExpenses } from "../utils/expensesAdd.js";
 
 
 
@@ -15,6 +16,9 @@ function DashBoard() {
   const[incomeControl,setIncomeControl]=useState(false);  /*fetch  control*/
   const[expenseControl,setExpenseControl]=useState(false);
 
+  const [balance,setBalance]=useState(0);
+  const [average,setAverage]=useState(1);
+
   /*for assining data*/
   const[incomeValue,setIncomeValue]=useState([]);
   const[expenseValue,setExpenseValue]=useState([]);
@@ -22,12 +26,12 @@ function DashBoard() {
 
   const [totalIncome,setTotalIncome]=useState(); 
   const [totalExpense,setTotalExpense]=useState(100);
-  const [balance,totalBalance]=useState(455);
-  const [average,setAverage]=useState(100);
+
+ 
 
 
-const { content, refresh ,calculateIncome , income} = useContent();
-
+const { contentIncome, refresh ,calculateIncome , income} = useContent();
+const {expense,contentExpenses,calculateExpenses,refreshExpenses}=useContentExpenses();
 
 useEffect(()=>{
   refresh();
@@ -35,14 +39,53 @@ useEffect(()=>{
 
 
 useEffect(()=>{
-  setIncomeValue(content)
-  console.log("contents inside useEffect of dashboard",content);
-},[content])
+  calculateIncome();
+},[contentIncome])
+
 
 
 useEffect(()=>{
-  calculateIncome();
-},[content])
+refreshExpenses();
+},[expenseControl]);
+
+
+useEffect(()=>{
+  calculateExpenses()
+},[contentExpenses])
+
+useEffect(()=>{
+balanceCal(income,expense);
+},[income,expense,])
+
+
+useEffect(()=>{
+averageCalculation(contentExpenses,expense);
+},[contentExpenses,expense])
+
+
+function balanceCal(income:number,expense:number){
+  const balance=income-expense;
+  setBalance(balance);
+  return;
+}
+
+function averageCalculation(contentExpenses:any[],expense:number){
+let values=0;
+values=contentExpenses.length;
+const averageSpend=(expense/values);
+setAverage(averageSpend);
+console.log("averageSpend:",averageSpend);
+return;
+}
+
+
+
+
+
+
+
+
+
 
 
   return (
@@ -80,7 +123,7 @@ useEffect(()=>{
           <Card
             icon={<ShareIcon />}
             variant="one"
-            amount={income+".00"}
+            amount={expense+".00"}
             value1="Spent"
             value2="This month expenses"
           />
@@ -91,7 +134,7 @@ useEffect(()=>{
           <Card
             icon={<ShareIcon />}
             variant="two"
-            amount={ 88 }
+            amount={income+".00"}
             value1=" Income"
             value2="This month Income"
           />
@@ -102,7 +145,7 @@ useEffect(()=>{
           <Card
             icon={<ShareIcon />}
             variant="three"
-            amount={ balance }
+            amount={balance+".00" }
             value1=" Balance "
             value2="This month Balance"
           />
@@ -114,7 +157,7 @@ useEffect(()=>{
           <Card
             icon={<ShareIcon />}
             variant="four"
-            amount={ average }
+            amount={average}
             value1="Average"
             value2="Per expense"
           />

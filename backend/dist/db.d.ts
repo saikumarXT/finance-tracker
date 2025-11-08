@@ -125,7 +125,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 }, {}, {}, {}, mongoose.Document<unknown, {}, {
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -138,7 +138,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 }, {}, mongoose.DefaultSchemaOptions> & {
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -151,7 +151,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 } & {
     _id: mongoose.Types.ObjectId;
 } & {
@@ -168,7 +168,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 }, mongoose.Document<unknown, {}, mongoose.FlatRecord<{
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -181,7 +181,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 }>, {}, mongoose.ResolveSchemaOptions<mongoose.DefaultSchemaOptions>> & mongoose.FlatRecord<{
     userId?: {
         prototype?: mongoose.Types.ObjectId | null;
@@ -194,7 +194,7 @@ declare const expensesModel: mongoose.Model<{
     } | null;
     category?: string | null;
     note?: string | null;
-    amount?: string | null;
+    amount?: number | null;
 }> & {
     _id: mongoose.Types.ObjectId;
 } & {

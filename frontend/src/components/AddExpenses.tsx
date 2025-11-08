@@ -16,7 +16,7 @@ enum expensesTypes{
 
 
 
-function AddExpense({openExpense,setOpenExpense}) {
+function AddExpense({openExpense,setOpenExpense,setExpenseControl}) {
 const [openCategory,setCategory]=useState(expensesTypes.Entertainment);
 
 const amountRef=useRef<HTMLInputElement>();
@@ -42,6 +42,7 @@ const noteRef=useRef<HTMLInputElement>()
       })
       console.log(res);
       alert('done');
+      setExpenseControl(x=>!x)
     }
 
 

@@ -24,7 +24,7 @@ const expensesTypes=['Groceries','Travel','Food','Entertainment','Health','Shopp
 
 const expenses=new Schema({
 userId:{ type:ObjectId},
-amount:{ type:String},
+amount:{ type:Number},
 category:{type:String, enum:expensesTypes},
 note:{ type:String }
 })

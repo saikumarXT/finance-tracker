@@ -28,7 +28,7 @@ function Card({variant,icon,value1,value2,amount}:cardProps) {
       </div>
 
       <div className="border-red-500 h-24">
-        <div><p className="font-bold ml-5 text-3xl text-white ">${amount}.00</p> </div>
+        <div><p className="font-bold ml-5 text-3xl text-white ">${amount}</p> </div>
         <div>
           <p className="font-bold text-xl text-white font-mono ml-5 mt-2">{value1} </p>
           <p className="font-bold text-sm  text-white font-mono ml-5">{value2} </p>  

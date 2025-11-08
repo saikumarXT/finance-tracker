@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 
 export function useContent(){
-const [content,setContent]=useState([]);
+const [contentIncome,setContent]=useState([]);
 const [income,setIncome]=useState(0);
 
     function refresh() {
@@ -14,14 +14,14 @@ const [income,setIncome]=useState(0);
             }
         }).then((response)=>{
              setContent(response.data.income);
-              console.log("content inside refresh:",content)
+              console.log("total income:",contentIncome)
         })
         
     }
 
     function calculateIncome(){
         let totalIncomeValue= 0;
-        content.map(({income})=>{
+        contentIncome.map(({income})=>{
             totalIncomeValue= totalIncomeValue+income;
         })
         console.log("total:",totalIncomeValue);
@@ -29,8 +29,10 @@ const [income,setIncome]=useState(0);
         return totalIncomeValue;
 
     }
-   
+    
 
-    return { content,refresh ,calculateIncome,income}
+
+
+    return { contentIncome,refresh ,calculateIncome,income}
 }
 

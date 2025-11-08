@@ -3,10 +3,10 @@ import { useState } from 'react';
 
 
 export function useContentExpenses(){
-const [useContentExpenses,setContentExpenses]=useState([]);
-const [expense,setExpense]=useState(0);
+const [contentExpenses,setContentExpenses]=useState([]); /*raw array*/
+const [expense,setExpense]=useState(0);   /*cal data-*/
 
-    function refresh() {
+    function refreshExpenses() {
         console.log('inside refresh fun expense')
          axios.get('http://localhost:3000/api/v1/expenses',{
             headers:{
@@ -14,23 +14,22 @@ const [expense,setExpense]=useState(0);
             }
         }).then((response)=>{
              setContentExpenses(response.data.expenses);
-              console.log("content inside refresh:",expense)
+              console.log("total expenses:",contentExpenses)
         })
         
     }
 
-    function calculateIncome(){
-        let totalIncomeValue= 0;
-        content.map(({income})=>{
-            totalIncomeValue= totalIncomeValue+income;
+    function calculateExpenses(){
+        let totalExpensesValue=0;
+        contentExpenses.map(({amount})=>{
+            totalExpensesValue=totalExpensesValue+amount;
         })
-        console.log("total:",totalIncomeValue);
-        setIncome(totalIncomeValue);
-        return totalIncomeValue;
-
+        console.log("total:",totalExpensesValue);
+        setExpense(totalExpensesValue);
+        return totalExpensesValue;
     }
    
 
-    return { content,refresh ,calculateIncome,income}
+    return {contentExpenses,refreshExpenses ,calculateExpenses,expense}
 }
 
