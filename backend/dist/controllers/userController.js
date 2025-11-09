@@ -156,23 +156,32 @@ userRouter.get("/income", auth, async (req, res) => {
 });
 userRouter.put("/income", auth, async (req, res) => {
     const userId = req.userId;
-    const { category, income, note, documentId } = req.body;
+    const { updates } = req.body; // array of income documents with _id and fields
+    console.log("✅ Reached PUT /income route");
+    console.log("Body:", req.body);
+    console.log("User ID:", req.userId);
+    if (!Array.isArray(updates)) {
+        return res.status(400).json({ message: "Invalid data format" });
+    }
     try {
-        const editIncome = await incomeModel.findByIdAndUpdate(documentId, {
-            income,
-            category,
-            note,
+        const updatePromises = updates.map((item) => 
+        // only update documents that belong to this user
+        incomeModel.findOneAndUpdate({ _id: item._id, userId }, {
+            $set: {
+                income: item.income,
+                category: item.category,
+                note: item.note,
+            },
+        }, { new: true }));
+        const results = await Promise.all(updatePromises);
+        res.status(200).json({
+            message: "Income records updated successfully",
+            results,
         });
-        if (editIncome) {
-            res.status(200).json({
-                message: "income data updated successfully"
-            });
-        }
     }
     catch (err) {
-        res.status(400).json({
-            message: err
-        });
+        console.error(err);
+        res.status(500).json({ message: "Server error", error: err });
     }
 });
 userRouter.delete("/income", auth, async (req, res) => {

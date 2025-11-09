@@ -6,6 +6,7 @@ import Card from "../components/Card";
 import { ShareIcon } from "../icons/shareIcon";
 import { useContent }from "../utils/incomeAdd.js";
 import { useContentExpenses } from "../utils/expensesAdd.js";
+import { IncomeTransition } from "../components/incomeTransition.js";
 
 
 
@@ -20,18 +21,16 @@ function DashBoard() {
   const [average,setAverage]=useState(1);
 
   /*for assining data*/
-  const[incomeValue,setIncomeValue]=useState([]);
-  const[expenseValue,setExpenseValue]=useState([]);
 
 
-  const [totalIncome,setTotalIncome]=useState(); 
-  const [totalExpense,setTotalExpense]=useState(100);
 
- 
-
+  
 
 const { contentIncome, refresh ,calculateIncome , income} = useContent();
 const {expense,contentExpenses,calculateExpenses,refreshExpenses}=useContentExpenses();
+
+console.log(contentIncome,":at contentINcome at dashboard");
+
 
 useEffect(()=>{
   refresh();
@@ -77,11 +76,6 @@ setAverage(averageSpend);
 console.log("averageSpend:",averageSpend);
 return;
 }
-
-
-
-
-
 
 
 
@@ -166,8 +160,7 @@ return;
  
     <AddIncome  openIncome={openIncome} setIncomeControl={setIncomeControl} setOpenIncome={setOpenIncome}/>
     <AddExpense openExpense={openExpense}  setExpenseControl={setExpenseControl} setOpenExpense={setOpenExpense}/>
- 
- 
+   <div><IncomeTransition dataProp={contentIncome}/></div> 
 
     </div>
   );

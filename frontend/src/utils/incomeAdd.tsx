@@ -11,7 +11,7 @@ const [income,setIncome]=useState(0);
          axios.get('http://localhost:3000/api/v1/income',{
             headers:{
                 authorization:`Bearer ${localStorage.getItem("token")}`,
-            }
+            },
         }).then((response)=>{
              setContent(response.data.income);
               console.log("total income:",contentIncome)
