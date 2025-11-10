@@ -70,15 +70,15 @@ const noteRef=useRef<HTMLInputElement>();
         </div>
       </div>
       <div>
-        <p className="ml-6 mt-3 font-bold">Where did you get Money ?</p>
+        <p className="ml-6 mt-1 font-bold">Where did you get Money ?</p>
         <div className="ml-6 mt-1"> 
        
           <Input placeholder="Enter description" reference={noteRef}/>
-          
+    
           </div>
         
        
-        <p className="ml-6 mt-3 font-bold">Amount$</p>
+        <p className="ml-6 mt-1 font-bold">Amount$</p>
         <div className="ml-6 mt-1"> 
           
         
@@ -87,7 +87,7 @@ const noteRef=useRef<HTMLInputElement>();
           
           </div>
       </div>
-        <p className="ml-6 mt-3  font-bold">Category</p>
+        <p className="ml-6 mt-1  font-bold">Category</p>
       <div className="flex flex-wrap gap-1.5 justify-center mt-2 ">
           
           <div className=""> <Button onClick={()=>setContentType(contentType.salary)} variant='secondary' text='Salary'    fontSize="sm"
@@ -102,7 +102,7 @@ const noteRef=useRef<HTMLInputElement>();
                 /></div>
       </div>
       <div className="flex justify-center">  
-         <div className=" mt-3"> <Button onClick={()=>addIncome()}    variant='primary' text='Add Income'   fontSize="sm"/>
+         <div className=" mt-2"> <Button onClick={()=>addIncome()}    variant='primary' text='Add Income'   fontSize="sm"/>
          </div>
       </div>
     </div>

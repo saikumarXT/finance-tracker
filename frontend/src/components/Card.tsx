@@ -11,20 +11,20 @@ interface cardProps{
 
 
 const variantClass={
-  "one":"bg-blue-800",
+  "one":"bg-blue-300",
   "two":"bg-yellow-400",
-  "three":"bg-pink-700",
+  "three":"bg-pink-300",
   "four":"bg-red-500"
 }
 
 
-const defaultData='bg-red-100 flex flex-col rounded-2xl border-red-500 m-4 h-48 w-72';
+const defaultData='bg-red-100 flex flex-col rounded-2xl border-red-500 m-3 h-48 w-72';
 
 function Card({variant,icon,value1,value2,amount}:cardProps) {
   return (
     <div className={variantClass[variant]+" "+defaultData }>
       <div className="border-blue-500 h-20">
-        <div className="mt-8 p-5">{icon}</div>
+        <div className="mt-4 p-5">{icon}</div>
       </div>
 
       <div className="border-red-500 h-24">

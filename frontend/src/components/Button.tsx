@@ -12,7 +12,7 @@ fontSize?:'sm'|'md'|'lg';
 }
 
 const variantClass={
-    "primary": "bg-blue-200 text-white ",
+    "primary": "bg-blue-100 text-white ",
     "secondary": "bg-blue-400 text-white",
     "final":"bg-blue-600 text-white"
 }

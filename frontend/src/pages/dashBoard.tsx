@@ -7,6 +7,11 @@ import { ShareIcon } from "../icons/shareIcon";
 import { useContent }from "../utils/incomeAdd.js";
 import { useContentExpenses } from "../utils/expensesAdd.js";
 import { IncomeTransition } from "../components/incomeTransition.js";
+import { ExpenseTransition } from "../components/expeneseTrasnsition.js";
+import { BalanceIcon } from "../icons/Balance.js";
+import { IncomeIcon } from "../icons/IncomeIcon.js";
+import MoneyAndCoinIcon from "../icons/ExpensesIcon.js";
+import { MySvgIcon } from "../icons/AverageSpentIcon.js";
 
 
 
@@ -20,11 +25,10 @@ function DashBoard() {
   const [balance,setBalance]=useState(0);
   const [average,setAverage]=useState(1);
 
-  /*for assining data*/
+  /*for re-render after deelte data*/
+const[deleteDate,SetDeleteDate]=useState(true);
+const[deleteDates,SetDeleteDates]=useState(true);
 
-
-
-  
 
 const { contentIncome, refresh ,calculateIncome , income} = useContent();
 const {expense,contentExpenses,calculateExpenses,refreshExpenses}=useContentExpenses();
@@ -34,7 +38,7 @@ console.log(contentIncome,":at contentINcome at dashboard");
 
 useEffect(()=>{
   refresh();
-},[incomeControl])
+},[incomeControl,deleteDate])
 
 
 useEffect(()=>{
@@ -45,7 +49,7 @@ useEffect(()=>{
 
 useEffect(()=>{
 refreshExpenses();
-},[expenseControl]);
+},[expenseControl,deleteDates]);
 
 
 useEffect(()=>{
@@ -72,8 +76,9 @@ function averageCalculation(contentExpenses:any[],expense:number){
 let values=0;
 values=contentExpenses.length;
 const averageSpend=(expense/values);
-setAverage(averageSpend);
-console.log("averageSpend:",averageSpend);
+const roundedNum=Math.round(averageSpend)
+setAverage(roundedNum);
+console.log("averageSpend:",roundedNum);
 return;
 }
 
@@ -111,14 +116,14 @@ return;
       </div>
     
 
-      <div className="flex flex-row " >
+      <div className="flex flex-row ml-3 " >
         <div>
           {" "}
           <Card
-            icon={<ShareIcon />}
+            icon={<IncomeIcon/>}
             variant="one"
             amount={expense+".00"}
-            value1="Spent"
+            value1="Expense"
             value2="This month expenses"
           />
         </div>
@@ -126,7 +131,7 @@ return;
         <div>
           {" "}
           <Card
-            icon={<ShareIcon />}
+            icon={<MoneyAndCoinIcon/>}
             variant="two"
             amount={income+".00"}
             value1=" Income"
@@ -137,7 +142,7 @@ return;
         <div>
           {" "}
           <Card
-            icon={<ShareIcon />}
+            icon={<BalanceIcon />}
             variant="three"
             amount={balance+".00" }
             value1=" Balance "
@@ -149,9 +154,9 @@ return;
           {" "}
 
           <Card
-            icon={<ShareIcon />}
+            icon={  <MySvgIcon width={42} height={42} />}
             variant="four"
-            amount={average}
+            amount={average +".00"}
             value1="Average"
             value2="Per expense"
           />
@@ -160,7 +165,16 @@ return;
  
     <AddIncome  openIncome={openIncome} setIncomeControl={setIncomeControl} setOpenIncome={setOpenIncome}/>
     <AddExpense openExpense={openExpense}  setExpenseControl={setExpenseControl} setOpenExpense={setOpenExpense}/>
-   <div><IncomeTransition dataProp={contentIncome}/></div> 
+ 
+   <div className="w-screen flex flex-col items-center ">
+  <div className="mt-4"><IncomeTransition SetDeleteDate={SetDeleteDate} dataProp={contentIncome}/> </div> 
+  <div className="mt-8 "><ExpenseTransition SetDeleteDates={SetDeleteDates} dataProp={contentExpenses}  />
+  <p className=' mt-20 font-mono ml-96'>Thank-you For Vist *SaiKumar-XT😊*</p>
+  </div>
+  
+
+    </div>
+
 
     </div>
   );
